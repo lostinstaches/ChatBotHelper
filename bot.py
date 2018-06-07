@@ -34,18 +34,20 @@ def guess_ask(str, questions):
 
 
 #wrong_answers = []
+tempanswers = answers
 tempquestions = questions
 while True:
     print("Добрый день! Чем я могу помочь?")
     req = input()
     possible_answer = guess_ask(req, tempquestions)
-    print(answers[possible_answer])
+    print(tempanswers[possible_answer])
     print('Помогло? Если да, то ответье да.')
     is_done = input()
     if (is_done == "да"):
         print('Спасибо, всего доброго!')
         break 
     del tempquestions[possible_answer]
+    del tempanswers[possible_answer]
         
 
 
