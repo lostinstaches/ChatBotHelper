@@ -1,4 +1,5 @@
 from data import questions, answers
+from heapq import nlargest
 
 def guess_ask(str, questions):
     str = str.lower()
@@ -18,28 +19,33 @@ def guess_ask(str, questions):
         count.append(occurrences)
 
     max_num = max(count)
+    # maxnumbers = nlargest(3, count)
+    # positions = []
+    #position = 0
+    # for i in maxnumbers:
+    #     positions.append(count.index(i))
+    return count.index(max_num)
+    # for i in count:
+    #     if i == max_num:
+    #         return position
+    #     position += 1
 
-    position = 0
-    for i in count:
-        if i == max_num:
-            return position
-        position += 1
 
 
 
-
-wrong_answers = []
-
+#wrong_answers = []
+tempquestions = questions
 while True:
     print("Добрый день! Чем я могу помочь?")
     req = input()
-    possible_answer = guess_ask(req, questions)
+    possible_answer = guess_ask(req, tempquestions)
     print(answers[possible_answer])
     print('Помогло? Если да, то ответье да.')
     is_done = input()
     if (is_done == "да"):
         print('Спасибо, всего доброго!')
         break 
+    del tempquestions[possible_answer]
         
 
 
