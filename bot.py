@@ -9,7 +9,12 @@ def guess_ask(str, questions):
         occurrences = 0
         sentence = sentence.lower()
         for i in range(len(words_apart)):
-            occurrences += sentence.count(words_apart[i])
+            if len(words_apart[i]) > 4:
+                word = words_apart[i]
+                short_form = word [:4]
+                occurrences += sentence.count(short_form)
+            else:
+                occurrences += sentence.count(words_apart[i])
         count.append(occurrences)
 
     max_num = max(count)
